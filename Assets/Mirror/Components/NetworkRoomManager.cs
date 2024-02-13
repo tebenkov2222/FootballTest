@@ -120,8 +120,6 @@ namespace Mirror
 
         void SceneLoadedForPlayer(NetworkConnectionToClient conn, GameObject roomPlayer)
         {
-            Debug.Log($"NetworkRoom SceneLoadedForPlayer scene: {SceneManager.GetActiveScene().path} {conn}");
-
             if (Utils.IsSceneActive(RoomScene))
             {
                 // cant be ready in room, add to ready list
@@ -268,7 +266,6 @@ namespace Mirror
         /// <param name="conn">Connection from client.</param>
         public override void OnServerReady(NetworkConnectionToClient conn)
         {
-            Debug.Log($"NetworkRoomManager OnServerReady {conn}");
             base.OnServerReady(conn);
 
             if (conn != null && conn.identity != null)

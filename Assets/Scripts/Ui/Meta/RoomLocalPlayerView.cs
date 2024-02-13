@@ -115,7 +115,6 @@ namespace Ui.Meta
                 return;
             if(!_localPlayer.isServer)
                 return;
-            Debug.Log($"OnStartButtonClicked");
             _networkManager.ServerChangeScene(_networkManager.GameplayScene);
         }
 

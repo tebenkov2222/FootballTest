@@ -1,3 +1,4 @@
+using Color;
 using Game;
 using Mirror.Examples.NetworkRoom;
 using UnityEngine;
@@ -28,12 +29,15 @@ namespace Mirror
                 base.OnRoomServerPlayersReady();
             }
         }
-        
-        public override bool OnRoomServerSceneLoadedForPlayer(NetworkConnectionToClient conn, GameObject roomPlayer, GameObject gamePlayer)
+
+        public override bool OnRoomServerSceneLoadedForPlayer(NetworkConnectionToClient conn, GameObject roomPlayer,
+            GameObject gamePlayer)
         {
             var gamePlayerFootball = gamePlayer.GetComponent<Player>();
             var roomPlayerFootball = roomPlayer.GetComponent<NetworkRoomPlayerFootball>();
+
             gamePlayerFootball.SetColor(roomPlayerFootball.ColorType);
+
             return true;
         }
         

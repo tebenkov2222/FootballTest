@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Security.Cryptography;
 using Color;
 using Mirror;
 using Ui.Game;
@@ -15,7 +17,8 @@ namespace Game
         [SerializeField] private Transform _cameraRoot;
         [SerializeField] private Gun _gun;
         [SerializeField] private Goal _goal;
-        [SerializeField] private MeshRenderer _bodyMeshRenderer;
+        [SerializeField] private GoalMove _goalMove;
+        [SerializeField] private List<MeshRenderer> _meshRenderersToChangeColor;
         [SerializeField] private ColorConfig _colorConfig; //todo: вынести бы в отдельный статичный класс со всеми конфигами чтобы не прокидывать по всем инстанциями
         
         [SyncVar(hook = nameof(ScoreHookHandler))] private int _score;
@@ -28,14 +31,11 @@ namespace Game
         public override void OnStartServer()
         {
             base.OnStartServer();
-            Debug.Log("Player OnStartServer");
-
         }
 
         public override void OnStartClient()
         {
             base.OnStartClient();
-            Debug.Log("OnStartClient");
             if (!isOwned)
             {
                 Destroy(_gun);
@@ -46,10 +46,12 @@ namespace Game
                 _gun.Init(this);
                 Hud.Instance.Init(this, _gun);
             }
-            
-            if(!isServer)
-                Destroy(_goal);
 
+            if (!isServer)
+            {
+                Destroy(_goalMove);
+                Destroy(_goal);
+            }
         }
         
         private void RelocateCamera()
@@ -74,13 +76,22 @@ namespace Game
 
         private void ColorTypeHookHandler(ColorType oldColor, ColorType newColor)
         {
-            SetColor(newColor);
+            ViewColor();
         }
         
+        [Server]
         public void SetColor(ColorType colorType)
         {
             _colorType = colorType;
-            _bodyMeshRenderer.material = _colorConfig.Colors[colorType].MaterialPlayer;
+            ViewColor();
+        }
+
+        private void ViewColor()
+        {
+            foreach (var meshRenderer in _meshRenderersToChangeColor)
+            {
+                meshRenderer.material = _colorConfig.Colors[_colorType].MaterialPlayer;
+            }
         }
     }
 }

@@ -46,7 +46,6 @@ namespace Game
         
         private void OnLifeTimeElapsed()
         {
-            Debug.Log($"OnLifeTimeElapsed");
             OnLifeTimeElapsedRpc();
             Destroyed?.Invoke(this);
         }
