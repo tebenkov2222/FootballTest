@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9758f2782f764718b0a057bfd0b7517b, type: 3}
+  m_Name: ColorConfig
+  m_EditorClassIdentifier: 
+  _views:
+  - _colorType: 0
+    _colorView: {r: 0, g: 0, b: 1, a: 1}
+    _materialPlayer: {fileID: 2100000, guid: a195d1fa7a3b61346bc625357e374a84, type: 2}
+  - _colorType: 1
+    _colorView: {r: 0, g: 0.78431374, b: 0.74509805, a: 1}
+    _materialPlayer: {fileID: 2100000, guid: 0c07fcf5e851aa74d9ac742d165790b6, type: 2}
+  - _colorType: 2
+    _colorView: {r: 0, g: 0.78431374, b: 0, a: 1}
+    _materialPlayer: {fileID: 2100000, guid: e48f9df44cd6b884e8a161e7d6f041cf, type: 2}
+  - _colorType: 3
+    _colorView: {r: 0.78431374, g: 0, b: 0.56078434, a: 1}
+    _materialPlayer: {fileID: 2100000, guid: 869fe4a541e8d8246b2cf48cb7af9c18, type: 2}
+  - _colorType: 4
+    _colorView: {r: 1, g: 0, b: 0, a: 1}
+    _materialPlayer: {fileID: 2100000, guid: cdb1d2d5bc8ec31429bc5c06f6567586, type: 2}
+  - _colorType: 5
+    _colorView: {r: 0.78431374, g: 0.72156864, b: 0, a: 1}
+    _materialPlayer: {fileID: 2100000, guid: a314a773b2cd92f4ea235c3cae69f57d, type: 2}
